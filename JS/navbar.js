@@ -66,7 +66,7 @@ class MobileNavbar {
     items[currentItem].classList.add("current-item");
   }
   
-  const interval = setInterval(nextItem, 3000); // Transição a cada 3 segundos (3000 milissegundos)
+  //const interval = setInterval(nextItem, 3000); // Transição a cada 3 segundos (3000 milissegundos)
   
   controls.forEach((control) => {
     control.addEventListener("click", (e) => {
