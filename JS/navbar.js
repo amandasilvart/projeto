@@ -97,7 +97,7 @@ class MobileNavbar {
   
       items[currentItem].classList.add("current-item");
   
-      interval = setInterval(nextItem, 7000); // Reinicia o intervalo após o clique no controle
+      //interval = setInterval(nextItem, 7000); // Reinicia o intervalo após o clique no controle
     });
   });
   
