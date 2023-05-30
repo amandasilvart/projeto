@@ -44,62 +44,57 @@ class MobileNavbar {
   mobileNavbar.init();
 
   //SLIDES DAS FOTOS
-  const controls = document.querySelectorAll(".control");
-  let currentItem = 0;
-  const items = document.querySelectorAll(".item");
-  const maxItems = items.length;
-  
-  function nextItem() {
-    currentItem += 1;
-  
+ const controls = document.querySelectorAll(".control");
+let currentItem = 0;
+const items = document.querySelectorAll(".item");
+const maxItems = items.length;
+
+function nextItem() {
+  currentItem += 1;
+
+  if (currentItem >= maxItems) {
+    currentItem = 0;
+  }
+
+  items.forEach((item) => item.classList.remove("current-item"));
+
+  items[currentItem].scrollIntoView({
+    behavior: "smooth",
+    inline: "center"
+  });
+
+  items[currentItem].classList.add("current-item");
+}
+
+controls.forEach((control) => {
+  control.addEventListener("click", (e) => {
+    const isLeft = e.target.classList.contains("arrow-left");
+
+    if (isLeft) {
+      currentItem -= 1;
+    } else {
+      currentItem += 1;
+    }
+
     if (currentItem >= maxItems) {
       currentItem = 0;
     }
-  
+
+    if (currentItem < 0) {
+      currentItem = maxItems - 1;
+    }
+
     items.forEach((item) => item.classList.remove("current-item"));
-  
+
     items[currentItem].scrollIntoView({
       behavior: "smooth",
       inline: "center"
     });
-  
+
     items[currentItem].classList.add("current-item");
-  }
-  
-  //const interval = setInterval(nextItem, 3000); // Transição a cada 3 segundos (3000 milissegundos)
-  
-  controls.forEach((control) => {
-    control.addEventListener("click", (e) => {
-      clearInterval(interval); // Limpa o intervalo quando um controle é clicado
-  
-      const isLeft = e.target.classList.contains("arrow-left");
-  
-      if (isLeft) {
-        currentItem -= 1;
-      } else {
-        currentItem += 1;
-      }
-  
-      if (currentItem >= maxItems) {
-        currentItem = 0;
-      }
-  
-      if (currentItem < 0) {
-        currentItem = maxItems - 1;
-      }
-  
-      items.forEach((item) => item.classList.remove("current-item"));
-  
-      items[currentItem].scrollIntoView({
-        behavior: "smooth",
-        inline: "center"
-      });
-  
-      items[currentItem].classList.add("current-item");
-  
-      //interval = setInterval(nextItem, 7000); // Reinicia o intervalo após o clique no controle
-    });
   });
+});
+
   
 
   
